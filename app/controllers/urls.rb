@@ -6,7 +6,10 @@ end
 
 post '/urls' do
   # create a new Url
-  @url = Url.create(params)
+  # see if there is a user signed in
+  # if so, pass their id to Url.create
+  # otherwise, just create a url
+  @url = Url.create(:long => params[:url])
   redirect '/'
 end
 

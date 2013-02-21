@@ -31,7 +31,7 @@ end
 get '/user/:profile_url' do
   @usr = User.find_by_profile_url(params[:profile_url])
   if @usr.profile_url == session[:profile_url]
-    erb :secret_page
+    erb :profile
   else
     session[:message] = "Unauthorized access!!!! Please Sign in."
     session.delete("profile_url")
