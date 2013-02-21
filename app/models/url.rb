@@ -2,6 +2,7 @@ require 'digest/md5'
 require 'uri'
 
 class Url < ActiveRecord::Base
+  belongs_to :user
   before_create :create_short_url
 
   validates :long, :presence => true,

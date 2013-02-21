@@ -6,6 +6,30 @@
   </form>
 </div>
 
+<div class="container">
+  <p>Sign In</p>
+  <form method="post" action="/login">
+    <label for="email">Email</label>
+    <input type="text" name="email"/>
+    <label for="password">Password</label>
+    <input type="password" name="password"/>
+    <input type="submit" value="login"/>
+  </form>  
+
+  <p>Sign Up</p>
+  <form method="post" action="/user">
+    <label type="first_name">First Name</label>
+    <input type="text" name="first_name"/>
+    <label type="last_name">Last Name</label>
+    <input type="text" name="last_name"/>
+    <label for="email">Email</label>
+    <input type="text" name="email"/>
+    <label for="password">Password</label>
+    <input type="password" name="password"/>
+    <input type="submit" value="Sign up">
+  </form> 
+</div>
+
 <hr />
 
 <div class="url-list">
@@ -23,7 +47,16 @@
     <ul>
       <li>Short Url</li>
       <% @urls.each do |url| %>
-      <li><a href="/<%=url.short%>">http://localhost:9292<%= url.short %></a></li>
+      <li><a href="/<%=url.short%>">http://localhost:9292/<%= url.short %></a></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="click_count">
+    <ul>
+      <li>Click Count</li>
+      <% @urls.each do |url| %>
+      <li><%= url.click_count %></li>
       <% end %>
     </ul>
   </div>

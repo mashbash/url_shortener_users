@@ -13,3 +13,7 @@
 .short {
   float:left;
 }
+
+.click_count {
+  float: left;
+}
