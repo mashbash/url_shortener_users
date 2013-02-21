@@ -1,0 +1,15 @@
+.url-list {
+  font-size: 2em;
+}
+
+.url-list ul {
+  list-style: none;
+}
+
+.long {
+  float:left;
+}
+
+.short {
+  float:left;
+}
