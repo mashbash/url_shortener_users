@@ -1,0 +1,37 @@
+<div class="container">
+  <p>Please remember to insert http:// or https:// in front of your URL</p>
+  <form action="/urls" method="post">
+    <label name="url">URL</label>
+    <input type="text" name="long" />
+  </form>
+</div>
+
+<div class="url-list">
+  <div class="long">  
+    <ul>
+      <li>Long Url</li>
+      <% @urls.each do |url| %>
+      <li><%= url.long %></li>
+      <% end %>
+
+    </ul>  
+  </div>
+
+  <div class="short">
+    <ul>
+      <li>Short Url</li>
+      <% @urls.each do |url| %>
+      <li><a href="/<%=url.short%>">http://localhost:9292/<%= url.short %></a></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="click_count">
+    <ul>
+      <li>Click Count</li>
+      <% @urls.each do |url| %>
+      <li><%= url.click_count %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

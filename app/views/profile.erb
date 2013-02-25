@@ -1,4 +1,21 @@
+<div>
+  <form action="/logout" method="post">
+    <input type="submit" value="Logout"/>
+    <input type="hidden" value="session[:message]"/>
+  </form>  
+</div>
+
+<div class="container">
+  <p>Please remember to insert http:// or https:// in front of your URL</p>
+  <form action="/urls" method="post">
+    <label name="url">URL</label>
+    <input type="hidden" name="usr_profile" value="<%= @usr.profile_url %>"/>
+    <input type="text" name="long"/>
+  </form>
+</div>
+
 <ul>
+  <%= @url %>
 <% @usr.urls.each do |url|%>
 <li><%= url.long %></li>
 <li><%= url.short %></li>

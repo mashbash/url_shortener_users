@@ -7,22 +7,30 @@ get '/' do
 end
 
 post '/login' do
-  usr = User.find_by_email params[:email]
+  puts "[LOGIN] #{params}"
+  puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+  @usr = User.find_by_email params[:email]
   # if usr is nil here, that means the account doesn't
   # exist -- print error message and encourage user to register?
-
-  if usr.password == params[:password]
-    session[:profile_url] = usr.profile_url
-    session[:message] = "Login Successful"
-    redirect "/user/#{usr.profile_url}"
+  if @usr != nil
+    if @usr.password == params[:password]
+      session[:profile_url] = @usr.profile_url
+      session[:message] = "Login Successful"
+      puts "[AFTER LOGIN] #{params}"
+      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+      redirect "/user/#{@usr.profile_url}"
+    else
+      session[:message] = "Login failed"
+      redirect '/'
+    end
   else
-    session[:message] = "Login failed"
-    redirect '/'
-  end
+    session[:message] = "Wrong email or password"
+      redirect '/'
+  end     
 end
 
-get '/logout' do
-  # clean out sessions hash
+post '/logout' do
+  puts "[LOG] #{params}"
   session.delete("profile_url")
   session[:message] = "Logout complete"
   redirect '/'
